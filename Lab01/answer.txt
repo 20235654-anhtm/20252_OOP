@@ -9,9 +9,6 @@ Trong đoạn mã hiện tại, giá trị CANCEL_OPTION không được xử l�
 Có thể sử dụng phương thức JOptionPane.showOptionDialog(), cho phép tùy chỉnh các nút hiển thị:
 Ví dụ: Chỉ hiển thị "Yes" và "No"
 
-java
-Sao chép
-Chỉnh sửa
 int option = JOptionPane.showOptionDialog(null,
     "Do you agree?", 
     "Custom Options", 
@@ -25,9 +22,6 @@ JOptionPane.showMessageDialog(null, "You've chosen: " + (option == 0 ? "Yes" : "
 new Object[]{"Yes", "No"}: Định nghĩa hai lựa chọn tùy chỉnh.
 Ví dụ: Tùy chỉnh thành "I do" và "I don’t"
 
-java
-Sao chép
-Chỉnh sửa
 int option = JOptionPane.showOptionDialog(null,
     "Do you agree?", 
     "Custom Options", 
