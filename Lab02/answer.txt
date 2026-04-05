@@ -1,0 +1,35 @@
+Câu hỏi 1: If you create a constructor method to build a DVD by title then create a constructor method to build a DVD by category. Does JAVA allow you to do this? 
+Trả lời:
+	Có, Java cho phép điều này. 
+	Java hỗ trợ việc nạp chồng phương thứ, nghĩa là có thể tạo nhiều constructor trong cùng một lớp miễn là chúng có danh sách tham số khác nhau.
+	Trong trường hợp hai constructor có cùng số lượng và cùng kiểu tham số, ta sẽ cần thêm một tham số phụ để tránh xung đột.
+
+Câu hỏi 2: Try to add a method addDigitalVideoDisc which allows to pass an arbitrary number of arguments for dvd. Compared to an array parameter. What do you prefer in this case? 
+Trả lời: 
+So sánh:
+	1. Dùng array: 
+		- Ưu điểm:
+			Cho phép truyền một danh sách các DVD dưới dạng mảng.
+			Nếu đã có một mảng DVD từ trước, có thể truyền trực tiếp vào phương thức.
+		- Nhược điểm:
+			Khi gọi phương thức, bắt buộc phải tạo một mảng trước khi truyền vào.
+			Không tiện khi muốn thêm một số lượng linh hoạt DVD mà không tạo mảng.
+
+	2. Dùng varsrgs:
+		- Ưu điểm:
+			Dễ sử dụng hơn vì có thể truyền bao nhiêu DVD tùy thích mà không cần tạo mảng.
+			Linh hoạt hơn trong các trường hợp thêm số lượng đĩa không cố định.
+		- Nhược điểm:
+			Nếu đã có một mảng từ trước, phải ép kiểu thành varargs khi gọi.
+
+Vậy trong trường hợp này , ta sẽ chọn varargs thay vì array để giúp code gọn hơn, linh hoạt hơn, dễ dùng hơn.
+
+Câu hỏi 3: 
+	● After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two 
+objects still remain? 
+	● After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is 
+the title of the JungleDVD changed?
+
+Trả lời:  
+	1. Java là pass-by-value (truyền tham trị), không phải pass-by-reference. Khi gọi swap(jungleDVD, cinderellaDVD), Java chỉ truyền giá trị của tham chiếu (tức là địa chỉ vùng nhớ của các đối tượng) chứ không truyền tham chiếu thực sự.
+	2. Khi truyền jungleDVD vào changeTitle(), Java truyền bản sao của tham chiếu đến jungleDVD, tức là cả tham chiếu trong main() và trong phương thức đều trỏ đến cùng một đối tượng trong bộ nhớ. Khi gọi dvd.setTitle(title), phương thức này thay đổi thuộc tính bên trong đối tượng jungleDVD, tức là thay đổi nội dung đối tượng, chứ không thay đổi tham chiếu.
