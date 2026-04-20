@@ -1,0 +1,39 @@
+1. Suggestion: Write a toString() method for the DigitalVideoDisc class. What should be the return type of this method?
+Trả lời:
+	Phương thức toString() nên có kiểu trả về là String. Đây là phương thức dùng để trả về thông tin của đối tượng dưới dạng chuỗi, giúp hiển thị dữ liệu dễ đọc hơn khi in ra màn hình.
+
+2. Suggestion: write a boolean isMatch(String title) method in the DigitalVideoDisc which finds out if the corresponding disk is a match given the title?
+Trả lời:
+	Phương thức isMatch(String title) có kiểu trả về là boolean. Mục đích của phương thức là kiểm tra xem tiêu đề đĩa hiện tại có khớp với chuỗi tiêu đề người dùng nhập không (so sánh không phân biệt chữ hoa thường). Nếu khớp thì trả về true, ngược lại trả về false.
+
+3. Which classes are aggregates of other classes? Checking all constructors of whole classes if they initialize for their parts? 
+Trả lời:
+	Các lớp là tập hợp (aggregate) của lớp khác:
+		- Lớp Store là một lớp aggregate vì nó chứa danh sách các đối tượng thuộc lớp Media (bao gồm Book, DigitalVideoDisc, CompactDisc). Danh sách này thường được khai báo là một ArrayList<Media> trong lớp Store.
+		- Lớp CompactDisc là một lớp aggregate vì nó chứa danh sách các Track.
+	Kiểm tra tất cả constructor của các lớp xem có khởi tạo cho các phần của nó hay không:
+		- Lớp Store: đã khởi tạo danh sách itemsInStore trong constructor.
+		- Lớp CompactDisc: đã khởi tạo danh sách tracks trong constructor.
+
+4. Alternatively, to compare items in the cart, instead of using the Comparator class I have mentioned, you can use the Comparable interface1and override the compareTo()method. You can refer to the Java docs to see the information of this interface. Suppose we are taking this Comparable interface approach.
+
+- What class should implement the Comparable interface?
+	=> Lớp Media nên implement giao diện Comparable<Media>, vì đây là lớp cha của tất cả các loại phương tiện như Book, DigitalVideoDisc, CompactDisc. Khi Media implement Comparable, thì các lớp con cũng sẽ thừa hưởng khả năng so sánh cơ bản này.
+
+- In those classes, how should you implement the compareTo()method to reflect the ordering that we want?
+	=> Phương thức compareTo() trong lớp Media nên được cài đặt như sau:
+public int compareTo(Media other) {
+    int titleCompare = this.getTitle().compareToIgnoreCase(other.getTitle());
+    if (titleCompare != 0) {
+        return titleCompare;
+    }
+    return Float.compare(this.getCost(), other.getCost());
+}
+
+- Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+	=> Không thể có hai quy tắc sắp xếp khác nhau nếu chỉ dùng Comparable, vì compareTo() chỉ được định nghĩa một lần duy nhất trong một class. Nếu muốn có nhiều cách sắp xếp, cần dùng thêm lớp Comparator riêng biệt, hoặc viết nhiều Comparator khác nhau và truyền vào lúc cần sắp xếp.
+
+- Suppose the DVDs have a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+	=> Trong trường hợp này, vì quy tắc sắp xếp của DVD khác biệt, không nên override compareTo() trong lớp Media, mà nên:
+		- Duy trì compareTo() chung ở Media cho trường hợp mặc định (ví dụ: title rồi cost).
+		- Với DVD, tạo một Comparator riêng để sắp xếp theo yêu cầu đặc biệt:
