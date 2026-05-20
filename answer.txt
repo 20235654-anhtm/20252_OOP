@@ -1,0 +1,40 @@
+Question: Programming with AWT and Swing is quite similar (similar elements including container/components, and event-handling). However, there are some differences that you need to note:
+o Compare the top-level containers in Swing and AWT
+o Compare the class name of components in AWT and the corresponding class’s name in Swing
+o Compare the event-handling of Swing and AWT applications
+The resulting appearances of the applications developed using Swing and AWT might be different as well. 
+Make comparisons.
+
+Trả lời:
+	
+	So sánh giữa AWT và Swing:
+
+1. So sánh các container cấp cao (top-level container):
+- AWT: Sử dụng các lớp như Frame, Dialog, Applet. Đây là các lớp "nặng" (heavyweight), phụ thuộc vào hệ điều hành để hiển thị giao diện. Điều này có thể dẫn đến giao diện hiển thị khác nhau trên các hệ điều hành khác nhau.
+- Swing: Sử dụng các lớp như JFrame, JDialog, JApplet. Đây là các lớp "nhẹ" (lightweight), được vẽ hoàn toàn bằng Java nên có giao diện nhất quán trên các nền tảng.
+
+2. So sánh class name của các components:
+Các lớp trong Swing thường có tiền tố "J" để phân biệt với AWT, ví dụ:
+
+- Nhãn:
+  + AWT: Label
+  + Swing: JLabel
+
+- Nút bấm:
+  + AWT: Button
+  + Swing: JButton
+
+- Trường nhập văn bản:
+  + AWT: TextField
+  + Swing: JTextField
+
+3. So sánh event-handling:
+- AWT và Swing đều sử dụng cơ chế lắng nghe sự kiện thông qua các Listener (ví dụ: ActionListener).
+- Tuy nhiên, Swing hỗ trợ tốt hơn cho lập trình hướng đối tượng, dễ mở rộng và tuân theo kiến trúc MVC (Model-View-Controller).
+- Swing cũng có thêm nhiều loại Listener và hỗ trợ tốt hơn cho giao diện phức tạp.
+
+4. Giao diện người dùng:
+- AWT sử dụng các thành phần của hệ điều hành, nên giao diện có thể khác nhau tùy OS.
+- Swing sử dụng các thành phần do Java tự vẽ, nên giao diện nhất quán và hiện đại hơn.
+
+Vậy Swing được xem là một phiên bản nâng cấp và thay thế cho AWT trong các ứng dụng Java GUI hiện đại, nhờ vào sự linh hoạt, giao diện đẹp và tính tương thích cao.
