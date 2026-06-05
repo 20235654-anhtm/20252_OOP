@@ -1,0 +1,20 @@
+1. The Aims class must be updated to handle any exceptions generated when the play() methods
+are called. What happens when you don’t update for them to catch?
+
+Nếu lớp Aims không được cập nhật để xử lý các ngoại lệ (exceptions) phát sinh từ phương thức play(), chương trình sẽ gặp các vấn đề sau:
+
+Chương trình bị dừng đột ngột (Crash):
+
+Khi một ngoại lệ không được bắt (uncaught exception), chương trình sẽ dừng lại và hiển thị thông báo lỗi mặc định của Java (vd: PlayerException: ERROR: DVD length is non-positive!). Điều này gây trải nghiệm người dùng kém, đặc biệt trong ứng dụng GUI như JavaFX.
+
+Không hiển thị thông báo lỗi thân thiện:
+
+Người dùng sẽ không nhận được hộp thoại thông báo rõ ràng (như hình minh họa trong file PDF, trang 36). Thay vào đó, lỗi có thể chỉ xuất hiện trong console hoặc log hệ thống.
+
+Mất tính ổn định của ứng dụng:
+
+Các chức năng liên quan (vd: thêm/xóa media, chuyển cảnh) có thể không hoạt động đúng do ngoại lệ chưa được xử lý, dẫn đến trạng thái ứng dụng không nhất quán.
+
+Không tận dụng cơ chế exception handling:
+
+File PDF đề cập việc sử dụng PlayerException để kiểm soát điều kiện phát media (vd: độ dài media ≤ 0). Nếu không bắt ngoại lệ, các ràng buộc nghiệp vụ này sẽ bị bỏ qua.

@@ -1,0 +1,21 @@
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <HBox alignment="CENTER" prefHeight="100.0">
+        <Label text="AIMS" textFill="#004cff">
+            <font>
+                <Font size="50.0" />
+            </font>
+            <padding>
+                <Insets left="10.0" />
+            </padding>
+        </Label>
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="btnViewCart" mnemonicParsing="false" onAction="#btnViewCartPressed" text="View Cart">
+            <margin>
+                <Insets right="20.0" />
+            </margin>
+        </Button>
+    </HBox>
+    <ScrollPane prefHeight="760.0" prefWidth="1024.0">
+        <GridPane fx:id="gridPane" />
+    </ScrollPane>
+</VBox>
